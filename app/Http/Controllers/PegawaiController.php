@@ -16,6 +16,8 @@ class PegawaiController extends Controller
         return view('Pegawai.Index')->with('data', $data);
     }
 
+
+    
     // Fungsi untuk membuat atau menyimpan data pegawai baru
     public function createData(Request $request)
     {

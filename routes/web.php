@@ -27,6 +27,16 @@ Route::get('/example', function () {
 
 
 
+
+Route::get('/dashboard', function () {
+    return view('Admin.Dashboard');
+});
+
+
+
+
+
+
 Route::get('/pegawai', [PegawaiController::class, 'index'])->name('getalldataPegawai');
 Route::post('/pegawai/create', [PegawaiController::class, 'createData'])->name('createDataPegawai');
 
