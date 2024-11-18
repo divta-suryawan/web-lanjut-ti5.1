@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PegawaiController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,24 +15,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
-
-Route::get('/example', function () {
-    return view('Pegawai.Eaxample');
-})->name('example');
+Route::get('/login', function () {
+    return view('Auth.Login');
+})->middleware('guest')->name('login');
+Route::post('/login-proses', [LoginController::class, 'login'])->name('loginproccess');
 
 
+Route::middleware('auth')->group(function () {
+    Route::get('/', function () {
+        return view('Admin.Dashboard');
+    });
 
-
-
-
-
-Route::get('/dashboard', function () {
-    return view('Admin.Dashboard');
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
-
 
 
 
